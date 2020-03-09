@@ -1,0 +1,102 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+
+<Defs>
+
+  <ThinkTreeDef>
+    <defName>Vacuum</defName>
+    <thinkRoot Class="ThinkNode_Priority">
+      <subNodes>
+        <!-- Downed -->
+        <li Class="ThinkNode_Subtree">
+          <treeDef>Downed</treeDef>
+        </li>
+        
+        <!-- Do a queued job -->
+        <li Class="ThinkNode_QueuedJob" />
+
+        <!-- Lord -->
+        <li Class="ThinkNode_Subtree">
+          <treeDef>LordDuty</treeDef>
+        </li>
+
+		<li Class="ThinkNode_ConditionalOfPlayerFaction">
+		  <subNodes>
+		  <li Class="ThinkNode_Tagger">
+              <tagToGive>RestingForMedicalReasons</tagToGive>
+              <subNodes>
+                <li Class="JobGiver_PatientGoToBed" />
+              </subNodes>
+            </li>
+            
+            <li Class="JobGiver_SeekAllowedArea" />
+            <li Class="JobGiver_SeekSafeTemperature" />
+			
+            <li Class="ThinkNode_ChancePerHour_Constant">
+              <mtbHours>0.5</mtbHours>
+              <subNodes>
+                <li Class="ThinkNode_ConditionalRequireCapacities">
+                  <requiredCapacities>
+                    <li>Manipulation</li>
+                  </requiredCapacities>
+                  <subNodes>
+                    <li Class="RobotVacuum.JobGiver_VacuumCleanRoom" />
+                  </subNodes>
+                </li>
+              </subNodes>
+            </li>
+			
+			<!-- Nuzzle randoms (even vacuums can be playful) -->
+            <li Class="ThinkNode_ChancePerHour_Nuzzle">
+              <subNodes>
+                <li Class="ThinkNode_Tagger">
+                  <tagToGive>Misc</tagToGive>
+                  <subNodes>
+                    <li Class="JobGiver_Nuzzle" />
+                  </subNodes>
+                </li>
+              </subNodes>
+            </li>
+			
+			<li Class="ThinkNode_Tagger">
+              <tagToGive>Idle</tagToGive>
+              <subNodes>
+                <!-- Wander near your current position if in hostile map -->
+                <li Class="ThinkNode_ConditionalAnyEnemyInHostileMap">
+                  <subNodes>
+                    <li Class="JobGiver_WanderAnywhere">
+                      <maxDanger>None</maxDanger>
+                      <ticksBetweenWandersRange>120~240</ticksBetweenWandersRange>
+                    </li>
+                  </subNodes>
+                </li>
+
+                <!-- Wander near filth at the colony -->
+                <li Class="RobotVacuum.JobGiver_WanderFilth">
+                  <maxDanger>None</maxDanger>
+				  <wanderRadius>3</wanderRadius>
+                  <ticksBetweenWandersRange>120~240</ticksBetweenWandersRange>
+                </li>
+              </subNodes>
+            </li>
+			</subNodes>
+		</li>
+		
+        <!-- Idle -->
+        <li Class="ThinkNode_Tagger">
+          <tagToGive>Idle</tagToGive>
+          <subNodes>
+            <li Class="JobGiver_WanderAnywhere">
+              <maxDanger>Deadly</maxDanger>
+			  <ticksBetweenWandersRange>120~240</ticksBetweenWandersRange> 
+            </li>
+          </subNodes>
+        </li>
+        
+        <!-- Idle error -->
+        <li Class="JobGiver_IdleError"/>
+      </subNodes>
+    </thinkRoot>
+  </ThinkTreeDef>
+  
+</Defs>

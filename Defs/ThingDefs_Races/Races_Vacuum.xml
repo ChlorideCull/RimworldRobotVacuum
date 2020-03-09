@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+  <ThingDef ParentName="AnimalThingBase" Name="Vacuum">
+    <soundImpactDefault>BulletImpact_Metal</soundImpactDefault>
+    <receivesSignals>true</receivesSignals>
+    <defName>Vacuum</defName>
+    <label>vacuum</label>
+    <statBases>
+	  <PsychicSensitivity>0.5</PsychicSensitivity>
+      <ToxicSensitivity>0</ToxicSensitivity>
+      <Flammability>0</Flammability>
+      <MoveSpeed>6.0</MoveSpeed>
+      <MarketValue>50</MarketValue>
+      <ComfyTemperatureMin>-15</ComfyTemperatureMin>
+      <ComfyTemperatureMax>35</ComfyTemperatureMax>
+	  <MeatAmount>0</MeatAmount>
+      <ArmorRating_Heat>2.00</ArmorRating_Heat>
+	  <LeatherAmount>0</LeatherAmount>
+    </statBases>
+    <tools>
+      <li>
+        <label>head</label>
+        <capacities>
+          <li>Blunt</li>
+        </capacities>
+        <power>1.5</power>
+        <cooldownTime>2</cooldownTime>
+      </li>
+    </tools>
+    <race>
+	  <hasGenders>false</hasGenders>
+	  <thinkTreeMain>Vacuum</thinkTreeMain>
+	  <hediffGiverSets>
+	    <li>Vacuum</li>
+	  </hediffGiverSets>
+	  <!--<fleshType>Mechanoid</fleshType>-->
+      <needsRest>true</needsRest>
+      <foodType>OmnivoreRoughAnimal</foodType>
+	  <bloodDef>Filth_MachineBits</bloodDef>
+      <body>Vacuum</body>
+      <wildness>0.00</wildness>
+      <trainability>None</trainability>
+      <petness>1</petness>
+      <lifeExpectancy>25</lifeExpectancy>
+	  <manhunterOnDamageChance>0.5</manhunterOnDamageChance>
+	  <manhunterOnTameFailChance>0</manhunterOnTameFailChance>
+	  <baseHungerRate>0.05</baseHungerRate>
+	  <!-- Can't get the leather or meat, but this prevents implicit automatic generation of "Vacuum meat" and "Vacuum leather" -->
+	  <useLeatherFrom>Mech_Centipede</useLeatherFrom>
+	  <useMeatFrom>Mech_Centipede</useMeatFrom>
+      <lifeStageAges>
+        <li>
+          <def>AnimalAdult</def>
+          <minAge>0</minAge>
+		  <soundWounded>Pawn_Mech_Scyther_Wounded</soundWounded>
+          <soundDeath>Pawn_Mech_Scyther_Death</soundDeath>
+          <soundCall>Pawn_Mech_Scyther_Call</soundCall>
+        </li>
+      </lifeStageAges>
+	  <soundMeleeHitPawn>Pawn_Melee_MechanoidBash_HitPawn</soundMeleeHitPawn>
+      <soundMeleeHitBuilding>Pawn_Melee_MechanoidBash_HitBuilding</soundMeleeHitBuilding>
+      <soundMeleeMiss>Pawn_Melee_MechanoidBash_Miss</soundMeleeMiss>
+    </race>
+  </ThingDef>
+  
+  <PawnKindDef ParentName="AnimalKindBase">
+    <defName>Vacuum</defName>
+    <label>vacuum</label>
+    <race>Vacuum</race>
+    <canArriveManhunter>false</canArriveManhunter>
+	<combatPower>33</combatPower>
+    <lifeStages>
+      <li>
+        <bodyGraphicData>
+          <texPath>Things/Pawn/Vacuum/Vacuum</texPath>
+          <drawSize>1.5</drawSize>
+          <color>(130,127,106)</color>
+          <shadowData>
+            <volume>(0.32, 0.35, 0.32)</volume>
+            <offset>(0,0,0)</offset>
+          </shadowData>
+        </bodyGraphicData>
+      </li>
+    </lifeStages>
+  </PawnKindDef>
+</Defs>

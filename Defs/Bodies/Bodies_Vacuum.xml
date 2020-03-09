@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+  <BodyDef>
+    <defName>Vacuum</defName>
+    <label>vacuum</label>
+    <corePart>
+      <def>VacuumChassis</def>
+      <height>Middle</height>
+      <depth>Outside</depth>
+      <parts>
+        <li>
+          <def>VacuumMainBoard</def>
+          <coverage>0.10</coverage>
+          <parts>
+            <li>
+              <def>ArtificialBrain</def>
+              <coverage>0.10</coverage>
+              <depth>Inside</depth>
+            </li>
+			<li>
+              <def>VacuumSIDChip</def>
+              <coverage>0.1</coverage>
+              <depth>Inside</depth>
+            </li>
+			<li>
+              <def>VacuumStomach</def>
+              <coverage>0.1</coverage>
+              <depth>Inside</depth>
+            </li>
+            <li>
+              <def>SightSensor</def>
+              <customLabel>left sight sensor</customLabel>
+              <coverage>0.2</coverage>
+            </li>
+            <li>
+              <def>SightSensor</def>
+              <customLabel>right sight sensor</customLabel>
+              <coverage>0.2</coverage>
+            </li>
+            <li>
+              <def>HearingSensor</def>
+              <customLabel>left hearing sensor</customLabel>
+              <coverage>0.05</coverage>
+            </li>
+            <li>
+              <def>HearingSensor</def>
+              <customLabel>right hearing sensor</customLabel>
+              <coverage>0.05</coverage>
+            </li>
+            <li>
+              <def>SmellSensor</def>
+              <coverage>0.06</coverage>
+            </li>
+          </parts>
+        </li>
+        <li>
+          <def>VacuumBrushes</def>
+          <coverage>0.05</coverage>
+          <height>Bottom</height>
+        </li>
+		<li>
+          <def>VacuumWheelBearing</def>
+          <customLabel>front left wheel bearing</customLabel>
+          <coverage>0.18</coverage>
+          <height>Bottom</height>
+          <parts>
+            <li>
+              <def>VacuumWheel</def>
+              <customLabel>front left wheel</customLabel>
+              <coverage>0.5</coverage>
+              <groups>
+                <li>FrontLeftLeg</li>
+              </groups>
+            </li>
+          </parts>
+        </li>
+        <li>
+          <def>VacuumWheelBearing</def>
+          <customLabel>front right wheel bearing</customLabel>
+          <coverage>0.18</coverage>
+          <height>Bottom</height>
+          <parts>
+            <li>
+              <def>VacuumWheel</def>
+              <customLabel>front right wheel</customLabel>
+              <coverage>0.5</coverage>
+              <groups>
+                <li>FrontRightLeg</li>
+              </groups>
+            </li>
+          </parts>
+        </li>
+        <li>
+          <def>VacuumWheelBearing</def>
+          <customLabel>rear left wheel bearing</customLabel>
+          <coverage>0.18</coverage>
+          <height>Bottom</height>
+          <parts>
+            <li>
+              <def>VacuumWheel</def>
+              <customLabel>rear left wheel</customLabel>
+              <coverage>0.5</coverage>
+            </li>
+          </parts>
+        </li>
+        <li>
+          <def>VacuumWheelBearing</def>
+          <customLabel>rear right wheel bearing</customLabel>
+          <coverage>0.18</coverage>
+          <height>Bottom</height>
+          <parts>
+            <li>
+              <def>VacuumWheel</def>
+              <customLabel>rear right wheel</customLabel>
+              <coverage>0.5</coverage>
+            </li>
+          </parts>
+        </li>
+        <li>
+          <def>Reactor</def>
+          <coverage>0.06</coverage>
+          <depth>Inside</depth>
+        </li>
+      </parts>
+    </corePart>
+  </BodyDef>
+</Defs>

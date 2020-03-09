@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ModMetaData>
+  <name>Robot Vacuum</name>
+  <author>Chloride Cull</author>
+  <url>https://chcl.se</url>
+  <description>Simple robot vacuum.</description>
+  <supportedVersions>
+    <li>1.1</li>
+  </supportedVersions>
+  <packageId>se.chcl.robotvacuum</packageId>
+</ModMetaData>

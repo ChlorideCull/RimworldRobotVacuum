@@ -53,6 +53,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CompVacuumConstructor.cs" />
+    <Compile Include="CompProperties_VacuumConstructor.cs" />
     <Compile Include="JobGiver_Clean.cs" />
     <Compile Include="JobGiver_WanderFilth.cs" />
     <Compile Include="Main.cs" />

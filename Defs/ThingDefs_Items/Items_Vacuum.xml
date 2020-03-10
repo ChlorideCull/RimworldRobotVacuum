@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+  <ThingDef ParentName="ResourceBase">
+    <defName>VacuumBox</defName>
+    <label>Vacuum (Boxed)</label>
+    <description>A boxed vacuum. It's assembled in the box.</description>
+    <graphicData>
+      <texPath>Things/Item/Resource/AnimalProductRaw/EggOval</texPath>
+      <color>(245,245,245)</color>
+	  <graphicClass>Graphic_StackCount</graphicClass>
+    </graphicData>
+	<techLevel>Industrial</techLevel>
+    <statBases>
+      <MarketValue>200.0</MarketValue>
+	  <Mass>0.6</Mass>
+      <Flammability>0.6</Flammability>
+      <DeteriorationRate>2.0</DeteriorationRate>
+	  <MaxHitPoints>70</MaxHitPoints>
+	  <WorkToMake>700</WorkToMake>
+    </statBases>
+	<costList>
+      <Steel>80</Steel>
+      <ComponentIndustrial>5</ComponentIndustrial>
+    </costList>
+	<recipeMaker>
+      <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+      <workSkill>Crafting</workSkill>
+      <effectWorking>Smith</effectWorking>
+      <soundWorking>Recipe_Smith</soundWorking>
+      <recipeUsers>
+        <li>ElectricSmithy</li>
+        <li>FueledSmithy</li>
+      </recipeUsers>
+      <unfinishedThingDef>UnfinishedVacuum</unfinishedThingDef>
+    </recipeMaker>
+    <comps>
+      <li Class="RobotVacuum.CompProperties_VacuumConstructor">
+        <hatcherPawn>Vacuum</hatcherPawn>
+      </li>
+    </comps>
+	<tickerType>Normal</tickerType>
+	<thingCategories>
+      <li>Manufactured</li>
+    </thingCategories>
+  </ThingDef>
+  
+  <ThingDef ParentName="UnfinishedBase">
+    <defName>UnfinishedVacuum</defName>
+    <label>unfinished vacuum</label>
+    <description>An unfinished vacuum.</description>
+    <statBases>
+      <Flammability>0.5</Flammability>
+    </statBases>
+    <graphicData>
+      <texPath>Things/Item/Unfinished/UnfinishedGun</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <stuffCategories Inherit="false" />
+  </ThingDef>
+</Defs>

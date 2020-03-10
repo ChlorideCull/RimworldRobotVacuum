@@ -3,9 +3,17 @@
   <name>Robot Vacuum</name>
   <author>Chloride Cull</author>
   <url>https://chcl.se</url>
-  <description>Simple robot vacuum.</description>
+  <description>Simple robot vacuum. Construct at a smithy, no research required.</description>
   <supportedVersions>
     <li>1.1</li>
   </supportedVersions>
   <packageId>se.chcl.robotvacuum</packageId>
+  <modDependencies>
+    <li>
+        <packageId>brrainz.harmony</packageId>
+        <displayName>Harmony</displayName>
+        <steamWorkshopUrl>steam://url/CommunityFilePage/2009463077</steamWorkshopUrl>
+        <downloadUrl>https://github.com/pardeike/HarmonyRimWorld/releases/latest</downloadUrl>
+    </li>
+  </modDependencies>
 </ModMetaData>

@@ -74,7 +74,7 @@
         <bodyGraphicData>
           <texPath>Things/Pawn/Vacuum/Vacuum</texPath>
           <drawSize>1.5</drawSize>
-          <color>(0,0,0)</color>
+          <color>(255,255,255)</color>
           <shadowData>
             <volume>(0.32, 0.35, 0.32)</volume>
             <offset>(0,0,0)</offset>

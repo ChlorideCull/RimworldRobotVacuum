@@ -60,6 +60,7 @@
     <Compile Include="Main.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RacePropertiesPatches.cs" />
+    <Compile Include="ThinkNode_ConditionalDirtyRoom.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

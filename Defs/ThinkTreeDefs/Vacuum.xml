@@ -7,9 +7,28 @@
     <defName>Vacuum</defName>
     <thinkRoot Class="ThinkNode_Priority">
       <subNodes>
+        <!-- Keep lying down if we have to -->
+        <li Class="ThinkNode_ConditionalMustKeepLyingDown">
+          <subNodes>
+            <!-- Do a queued job if possible -->
+            <li Class="ThinkNode_QueuedJob">
+              <inBedOnly>true</inBedOnly>
+            </li>
+
+            <!-- Keep lying down -->
+            <li Class="JobGiver_KeepLyingDown" />
+          </subNodes>
+        </li>
+        
         <!-- Downed -->
         <li Class="ThinkNode_Subtree">
           <treeDef>Downed</treeDef>
+        </li>
+        <li Class="ThinkNode_Subtree">
+          <treeDef>BurningResponse</treeDef>
+        </li>
+        <li Class="ThinkNode_Subtree">
+          <treeDef>MentalStateCritical</treeDef>
         </li>
         
         <!-- Do a queued job -->
@@ -19,21 +38,43 @@
         <li Class="ThinkNode_Subtree">
           <treeDef>LordDuty</treeDef>
         </li>
+        
+        <!-- Mental state non critical -->
+        <li Class="ThinkNode_Subtree">
+          <treeDef>MentalStateNonCritical</treeDef>
+        </li>
 
-		<li Class="ThinkNode_ConditionalOfPlayerFaction">
-		  <subNodes>
-		  <li Class="ThinkNode_Tagger">
-              <tagToGive>RestingForMedicalReasons</tagToGive>
+        <li Class="ThinkNode_Tagger">
+          <tagToGive>RestingForMedicalReasons</tagToGive>
+          <subNodes>
+            <li Class="JobGiver_PatientGoToBed" />
+          </subNodes>
+        </li>
+            
+        <li Class="JobGiver_SeekAllowedArea" />
+        <li Class="JobGiver_SeekSafeTemperature" />
+        
+        <!-- Satisfy basic needs -->
+        <li Class="ThinkNode_Subtree">
+          <treeDef>SatisfyBasicNeeds</treeDef>
+        </li>
+        
+        <li Class="ThinkNode_ConditionalOfPlayerFaction">
+          <subNodes>
+            <!-- Nuzzle randoms (even vacuums can be playful) -->
+            <li Class="ThinkNode_ChancePerHour_Nuzzle">
               <subNodes>
-                <li Class="JobGiver_PatientGoToBed" />
+                <li Class="ThinkNode_Tagger">
+                  <tagToGive>Misc</tagToGive>
+                  <subNodes>
+                    <li Class="JobGiver_Nuzzle" />
+                  </subNodes>
+                </li>
               </subNodes>
             </li>
             
-            <li Class="JobGiver_SeekAllowedArea" />
-            <li Class="JobGiver_SeekSafeTemperature" />
-			
             <li Class="ThinkNode_ChancePerHour_Constant">
-              <mtbHours>0.5</mtbHours>
+              <mtbHours>0.25</mtbHours>
               <subNodes>
                 <li Class="ThinkNode_ConditionalRequireCapacities">
                   <requiredCapacities>
@@ -45,20 +86,8 @@
                 </li>
               </subNodes>
             </li>
-			
-			<!-- Nuzzle randoms (even vacuums can be playful) -->
-            <li Class="ThinkNode_ChancePerHour_Nuzzle">
-              <subNodes>
-                <li Class="ThinkNode_Tagger">
-                  <tagToGive>Misc</tagToGive>
-                  <subNodes>
-                    <li Class="JobGiver_Nuzzle" />
-                  </subNodes>
-                </li>
-              </subNodes>
-            </li>
-			
-			<li Class="ThinkNode_Tagger">
+            
+            <li Class="ThinkNode_Tagger">
               <tagToGive>Idle</tagToGive>
               <subNodes>
                 <!-- Wander near your current position if in hostile map -->
@@ -74,21 +103,21 @@
                 <!-- Wander near filth at the colony -->
                 <li Class="RobotVacuum.JobGiver_WanderFilth">
                   <maxDanger>None</maxDanger>
-				  <wanderRadius>3</wanderRadius>
+                  <wanderRadius>3</wanderRadius>
                   <ticksBetweenWandersRange>120~240</ticksBetweenWandersRange>
                 </li>
               </subNodes>
             </li>
-			</subNodes>
-		</li>
-		
+            </subNodes>
+        </li>
+        
         <!-- Idle -->
         <li Class="ThinkNode_Tagger">
           <tagToGive>Idle</tagToGive>
           <subNodes>
             <li Class="JobGiver_WanderAnywhere">
               <maxDanger>Deadly</maxDanger>
-			  <ticksBetweenWandersRange>120~240</ticksBetweenWandersRange> 
+              <ticksBetweenWandersRange>120~240</ticksBetweenWandersRange> 
             </li>
           </subNodes>
         </li>

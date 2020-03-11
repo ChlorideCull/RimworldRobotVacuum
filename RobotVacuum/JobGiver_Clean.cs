@@ -21,8 +21,8 @@ namespace RobotVacuum
         {
             // Get the current room, excluding doors
             var pawnRoom = pawn.GetRoom(RegionType.Normal);
-            // Get the first 25 filth, mimicking the logic in WorkGiver_CleanFilth for eligibility
-            var filthToClean = pawnRoom.ContainedAndAdjacentThings.Where(x => x != null && x is Filth filth && filth.TicksSinceThickened > 600 && filth.Map.areaManager.Home[filth.Position]).Take(25).ToList();
+            // Get the first 100 filth, mimicking the logic in WorkGiver_CleanFilth for eligibility
+            var filthToClean = pawnRoom.ContainedAndAdjacentThings.Where(x => x != null && x is Filth filth && filth.TicksSinceThickened > 600 && filth.Map.areaManager.Home[filth.Position]).Take(100).ToList();
             if (filthToClean.Count == 0)
                 return null;
 
